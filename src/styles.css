@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+body {
+    font: 1.2rem/1.4 Roboto, serif;
+    min-height: 100vh;
+    line-height: 1.5;
+    background-image: url("https://images.unsplash.com/photo-1594981005649-6ffab8d8a8d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2089&q=80");
+}
+
+img, picture {
+    max-width: 100%;
+    display: block;
+}
+
+figure {
+    margin: 0;
+    background: #eee;
+    padding: 1em;
+    border-radius: 1em;
+    opacity: 35%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.author {
+    display: none;
+}
+
+#quote:hover .author {
+    display: inline-block;
+    justify-content: flex-end;
+}
+
+blockquote p::before {
+    content: '\201C';
+}
+
+blockquote p::after {
+    content: '\201C';
+}
+
+.weather {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 1.5rem;
+}
+
+#location {
+    font-size: 3rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.description {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+}
+
+.circle {
+    background-color: black;
+    border-radius: 50px;
+    height: 15px;
+    width: 15px;
+    margin: 0 15px;
+}
