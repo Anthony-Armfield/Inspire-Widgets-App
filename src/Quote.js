@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 
 class Quote extends React.Component {
     state = {
@@ -20,24 +19,38 @@ class Quote extends React.Component {
         }
     }
 
+    changeQuote() {
+        this.setState({ quote: this.getSingleQuote()});
+    }
+
     async getSingleQuote() {;
         let quotes = await this.fetchQuotes();
         let singleQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        let html = `<figure id="quote">
-                        <blockquote>
-                            ${singleQuote.excerpt.rendered}
-                        </blockquote>
-                        <figcaption class="author">
-                        - ${singleQuote.title.rendered}
-                        </figcaption>
-                    </figure>`;
-        let quoteContainer = document.querySelector('.quote');
-        quoteContainer.innerHTML = html;
+        let excerptHTML = `${singleQuote.excerpt.rendered}`
+        let authorHTML = `- ${singleQuote.title.rendered}`;
+        let excerptContainer = document.querySelector('#excerpt');
+        let authorContainer = document.querySelector('#author');
+        excerptContainer.innerHTML = excerptHTML;
+        authorContainer.innerHTML = authorHTML;
     }
 
     render() {
         return (
-            <div className="quote"></div>
+            <div className="quote">
+                <figure className="text-center" id="quote">
+                    <blockquote id="excerpt" className="blockquote row">
+                    </blockquote>
+                    <div className="row author">
+                        <div className="col">
+                            <figcaption id="author">
+                            </figcaption>
+                        </div>
+                        <div className="col">
+                            <button class="btn btn-primary" onClick={() => this.changeQuote()}>Change Quote</button>
+                        </div>
+                    </div>
+                </figure>
+            </div>
         );
     }
 }

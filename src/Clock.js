@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 
 var greeting = '';
 var isHour12 = true;
@@ -23,8 +22,8 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {
-        this.intervalID = setInterval(() => this.clockTick(timeOptions), 1000);
         this.getGreetingString();
+        this.intervalID = setInterval(() => this.clockTick(timeOptions), 1000);
     }
 
     componentWillUnmount() {
@@ -88,10 +87,10 @@ class Clock extends React.Component {
 
     render() {
         return (
-            <div>
-                <button className="hourButton" onClick={() => this.changeTimeFormat()}>{timeFormatString}</button>
-                <p>The time is {this.state.time}.</p>
-                <h2>Good {greeting}!</h2>
+            <div class="clock text-center">
+                <button className="hourButton btn btn-primary" onClick={() => this.changeTimeFormat()}>{timeFormatString}</button>
+                <h1>{this.state.time}</h1>
+                <h3>Good {greeting}!</h3>
             </div>
         );
     }

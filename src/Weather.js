@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 
 const api = `1787c10e5f58f378c580c944ae4ea159`;
 
@@ -22,22 +21,23 @@ class Weather extends React.Component {
         const sunrise = weather.sys.sunrise;
         const sunset = weather.sys.sunset;
 
-        const iconUrl = `http://openweathermap.rg/img/wn/${icon}@2x.png`;
+        const iconUrl = `http://openweathermap.org/img/wn/${icon}@4x.png`;
         const fahrenheit = (temp * 9) / 5 + 32;
+
 
         const sunriseGMT = new Date(sunrise * 1000);
         const sunsetGMT = new Date(sunset * 1000);
-        let html = `<img src="${iconUrl}" alt="" srcset="" id="weather-icon" />
+        let html = `<div class="weather-icon">
+                        <img src="${iconUrl}" alt="" srcset="" id="weather-icon" />
+                    </div>
                     <div id="location">${place}</div>
                     <div class="description">${description}</div>
-                    <div class="weather">
-                        <div class="celcius">${temp.toFixed(2)}°</div>
-                        <div class="circle"></div>
-                        <div class="fahrenheit">${fahrenheit.toFixed(2)}°</div>
+                    <div class="weather-icon">
+                        <div class="fahrenheit">${fahrenheit.toFixed(0)}°</div>
                     </div>
                     <div class="info">
-                        <h4>Sunrise: <span class="sunrise">${sunriseGMT.toLocaleDateString()}, ${sunriseGMT.toLocaleTimeString()}</span></h4>
-                        <h4>Sunset: <span class="sunset">${sunsetGMT.toLocaleDateString()}, ${sunsetGMT.toLocaleTimeString()}</span></h4>
+                        <h4>Sunrise: <span class="sunrise">${sunriseGMT.toLocaleTimeString()}</span></h4>
+                        <h4>Sunset: <span class="sunset">${sunsetGMT.toLocaleTimeString()}</span></h4>
                     </div>`;
         let weatherContainer = document.querySelector('.weather');
         weatherContainer.innerHTML = html;
@@ -58,7 +58,7 @@ class Weather extends React.Component {
 
     render() {
         return (
-            <div className="weather"></div>
+            <div className="weather text-center z-depth-5"></div>
         );
     }
 }
