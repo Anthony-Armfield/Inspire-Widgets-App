@@ -1,6 +1,6 @@
 import React from 'react';
 
-const api = `1787c10e5f58f378c580c944ae4ea159`;
+const api = `X`;
 
 class Weather extends React.Component {
 
